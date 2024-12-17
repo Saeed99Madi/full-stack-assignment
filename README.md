@@ -5,10 +5,11 @@
 To complete the following full-stack assignment. Treat this as a **production-quality endeavor**, building clean, maintainable, and well-structured code using **TypeScript** throughout both the front-end and back-end.
 
 ---
+
 ## **SQL Scheme**
 
-![image](https://github.com/user-attachments/assets/ea001311-f86c-4dc5-ad48-8bea9540cde4)
----
+## ![image](https://github.com/user-attachments/assets/ea001311-f86c-4dc5-ad48-8bea9540cde4)
+
 ## **Requirements** :wrench:
 
 ### **User Onboarding**
@@ -101,19 +102,10 @@ To complete the following full-stack assignment. Treat this as a **production-qu
 ## **Technologies Used** :computer:
 
 - **Front-End**: React.js with TypeScript
-- **Back-End**: Node.js / Nest.js with TypeScript
-- **Database**: PostgreSQL / Other DB
+- **Back-End**: Node.js / Express.js with TypeScript
+- **Database**: PostgreSQL
 - **State Management**: React Hooks
 - **Libraries**: Axios, Express.js
 - **Authentication**: JWT / Sessions
 
 ---
-
-## **Project Submission** :rocket:
-
-- Push your project to a public GitHub repository.
-- Share the repository link for review.
-
----
-
-Good luck! We look forward to reviewing your work. 🚀

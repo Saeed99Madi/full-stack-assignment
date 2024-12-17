@@ -5,7 +5,10 @@
 To complete the following full-stack assignment. Treat this as a **production-quality endeavor**, building clean, maintainable, and well-structured code using **TypeScript** throughout both the front-end and back-end.
 
 ---
+## **SQL Scheme**
 
+![image](https://github.com/user-attachments/assets/ea001311-f86c-4dc5-ad48-8bea9540cde4)
+---
 ## **Requirements** :wrench:
 
 ### **User Onboarding**

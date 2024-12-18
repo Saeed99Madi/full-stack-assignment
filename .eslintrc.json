@@ -1,0 +1,46 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  
+  "extends": [
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+
+  "plugins": ["@typescript-eslint", "promise"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "tabWidth": 2,
+        "printWidth": 80,
+        "useTabs": false,
+        "semi": true,
+        "singleQuote": true,
+        "trailingComma": "all",
+        "arrowParens": "avoid",
+        "endOfLine": "lf"
+      }
+    ],
+    "generator-star-spacing": "off"
+  },
+  "overrides": [
+    {
+      "files": ["__tests__/*.test.ts"],
+      "rules": {
+        "promise/prefer-await-to-then": "off",
+        "promise/prefer-await-to-callbacks": "off"
+      }
+    }
+  ]
+}

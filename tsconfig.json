@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./server",
+    "target": "es2021",
+    "noImplicitAny": true,
+    "lib": ["es2021", "dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "typeRoots": ["node_modules/@types"],
+    "module": "CommonJS",
+    "declaration": true
+  },
+  "include": ["server", "server/utils/express/index.d.ts"],
+  "exclude": ["__tests__/**.ts"],
+  "files": ["server/utils/express/index.d.ts"]
+}

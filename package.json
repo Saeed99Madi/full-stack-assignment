@@ -13,7 +13,8 @@
     "test": "cross-env NODE_ENV=test jest --runInBand ",
     "production-build": "tsc && npm run buildDB-production && cd ./client && npm run build",
     "build": "tsc",
-    "start": "cross-env NODE_ENV=production node ./dist"
+    "start": "cross-env NODE_ENV=production node ./dist",
+    "postinstall": " cd client && npm i"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",

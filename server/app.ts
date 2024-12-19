@@ -10,8 +10,13 @@ import { router } from './routes/router';
 import serverError from './middleware/errorMiddleware';
 import { errorWrapper } from './utils';
 import { apiLimiter } from './middleware/apiLimiter';
+import morgan from 'morgan';
 
 const app: Express = express();
+
+if (nodeEnv === 'development') {
+  app.use(morgan('dev')); // Logs detailed information for development
+}
 
 app.use([
   json(),

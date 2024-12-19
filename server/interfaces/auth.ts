@@ -5,12 +5,11 @@ export interface UserData {
   username: string;
   email: string;
   password: string;
-  confirmPassword: string;
   cover: string;
 }
 
 export interface userLoginAttrs {
-  username: string;
+  email: string;
   password: string;
 }
 

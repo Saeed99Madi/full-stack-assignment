@@ -7,9 +7,10 @@ const insertData = async (): Promise<void> => {
   // Seed the Data
 
   await User.create({
-    name: data.User[0].name,
+    username: data.User[0].username,
     email: data.User[0].email,
     password: await bcrypt.hash(data.User[0].password, 15),
+    cover: 'sdsdssds',
   });
 
   await Category.bulkCreate(data.Categorys);

@@ -45,8 +45,8 @@ export default function JwtLoginView() {
   });
 
   const defaultValues = {
-    email: 'demo@minimals.cc',
-    password: 'demo1234',
+    email: 'saed.dev9@gmail.com',
+    password: '123456789',
   };
 
   const methods = useForm({
@@ -129,7 +129,7 @@ export default function JwtLoginView() {
       {renderHead}
 
       <Alert severity="info" sx={{ mb: 3 }}>
-        Use email : <strong>demo@minimals.cc</strong> / password :<strong> demo1234</strong>
+        Use email : <strong>saed.dev9@gmail.com</strong> / password :<strong> 123456789</strong>
       </Alert>
 
       {renderForm}

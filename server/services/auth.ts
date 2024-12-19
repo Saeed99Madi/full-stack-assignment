@@ -63,13 +63,16 @@ const signupService = async (
 const loginService = async (
   userData: userLoginAttrs,
 ): Promise<{ loggedUser: object; token: string }> => {
-  const { password, username } = userData;
+  const { password, email } = userData;
 
   await loginSchema.validateAsync(userData);
 
   const user = await User.findOne({
-    where: { username },
+    where: { email },
   });
+  const users = await User.findAll();
+  console.log(users);
+
   if (!user) {
     throw new CustomError(404, 'هناك خطأ في اسم المستخدم');
   }
@@ -81,7 +84,7 @@ const loginService = async (
   }
 
   const userName = user.username;
-  const { id, email, createdAt, updatedAt } = user.dataValues;
+  const { id, createdAt, updatedAt } = user.dataValues;
 
   const loggedUser = {
     id,

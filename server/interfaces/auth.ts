@@ -10,7 +10,7 @@ export interface UserData {
 }
 
 export interface userLoginAttrs {
-  username: string;
+  email: string;
   password: string;
 }
 

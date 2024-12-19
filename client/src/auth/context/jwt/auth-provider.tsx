@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useCallback, useMemo } from 'react';
+import { useEffect, useReducer, useCallback, useMemo, useState } from 'react';
 // utils
 import axios, { endpoints } from 'src/utils/axios';
 //
@@ -82,6 +82,7 @@ type Props = {
 export function AuthProvider({ children }: Props) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+
   const initialize = useCallback(async () => {
     try {
       const accessToken = sessionStorage.getItem(STORAGE_KEY);
@@ -124,23 +125,34 @@ export function AuthProvider({ children }: Props) {
 
   // LOGIN
   const login = useCallback(async (email: string, password: string) => {
+
     const data = {
       email,
       password,
     };
 
-    const response = await axios.post(endpoints.auth.login, data);
+    // const response = await axios.post(endpoints.auth.login, data);
 
-    const { accessToken, user } = response.data;
+    // const { accessToken, user } = response.data;
 
-    setSession(accessToken);
-
-    dispatch({
-      type: Types.LOGIN,
-      payload: {
-        user,
-      },
-    });
+    // setSession(accessToken);
+    const response = await axios.post(
+      '/api/v1/user/login',
+      data,
+    );
+    console.log(response);
+    
+    const {user}  = response.data.data;
+    console.log(user);
+    if(user)  {
+      dispatch({
+        type: Types.LOGIN,
+        payload: {
+          user,
+        },
+      });
+    }
+   
   }, []);
 
   // REGISTER

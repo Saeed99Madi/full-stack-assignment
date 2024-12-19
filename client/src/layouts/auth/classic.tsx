@@ -15,7 +15,6 @@ import { useResponsive } from 'src/hooks/use-responsive';
 // theme
 import { bgGradient } from 'src/theme/css';
 // components
-import Logo from 'src/components/logo';
 
 // ----------------------------------------------------------------------
 
@@ -41,15 +40,7 @@ export default function AuthClassicLayout({ children, image, title }: Props) {
 
   const upMd = useResponsive('up', 'md');
 
-  const renderLogo = (
-    <Logo
-      sx={{
-        zIndex: 9,
-        position: 'absolute',
-        m: { xs: 2, md: 5 },
-      }}
-    />
-  );
+  
 
   const renderContent = (
     <Stack
@@ -123,8 +114,6 @@ export default function AuthClassicLayout({ children, image, title }: Props) {
         minHeight: '100vh',
       }}
     >
-      {renderLogo}
-
       {upMd && renderSection}
 
       {renderContent}

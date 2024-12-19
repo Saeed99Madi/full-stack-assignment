@@ -16,14 +16,6 @@ const signupSchema = Joi.object({
       'string.base': 'This field must be a valid email',
       'any.required': 'Email is a required field',
     }),
-  phone: Joi.string().min(2).max(10).required().messages({
-    'string.empty': 'This field cannot be empty',
-    'string.base': 'This field must be a valid phone number',
-    'string.min': 'This field must be at least 2 digits',
-    'string.max': 'This field must not exceed 10 digits',
-    'any.required': 'Phone number is a required field',
-  }),
-  role: Joi.string().valid('player', 'stadium'),
   password: Joi.string().min(2).max(25).required().messages({
     'string.empty': 'This field cannot be empty',
     'string.base': 'This field must be a valid password',
@@ -31,7 +23,13 @@ const signupSchema = Joi.object({
     'string.max': 'This field must not exceed 25 characters',
     'any.required': 'Password is a required field',
   }),
-  confirmPassword: Joi.any().valid(Joi.ref('password')).required(),
+  cover: Joi.string().min(2).max(25).required().messages({
+    'string.empty': 'This field cannot be empty',
+    'string.base': 'This field must be a valid password',
+    'string.min': 'This field must be at least 2 characters',
+    'string.max': 'This field must not exceed 25 characters',
+    'any.required': 'Password is a required field',
+  }),
 });
 
 const loginSchema = Joi.object({

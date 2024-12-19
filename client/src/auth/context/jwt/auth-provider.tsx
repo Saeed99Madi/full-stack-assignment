@@ -131,16 +131,12 @@ export function AuthProvider({ children }: Props) {
       password,
     };
 
-    // const response = await axios.post(endpoints.auth.login, data);
-
-    // const { accessToken, user } = response.data;
-
-    // setSession(accessToken);
+   
     const response = await axios.post(
       '/api/v1/user/login',
       data,
     );
-    console.log(response);
+   
     
     const {user}  = response.data.data;
     console.log(user);
@@ -157,19 +153,20 @@ export function AuthProvider({ children }: Props) {
 
   // REGISTER
   const register = useCallback(
-    async (email: string, password: string, firstName: string, lastName: string) => {
+    async (email: string, password: string, cover: string, username: string) => {
       const data = {
         email,
         password,
-        firstName,
-        lastName,
+        username,
+        cover,
       };
 
-      const response = await axios.post(endpoints.auth.register, data);
+      const response = await axios.post(
+        '/api/v1/user/signup',
+        data,
+      );
 
-      const { accessToken, user } = response.data;
-
-      sessionStorage.setItem(STORAGE_KEY, accessToken);
+      const { user } = response.data;
 
       dispatch({
         type: Types.REGISTER,

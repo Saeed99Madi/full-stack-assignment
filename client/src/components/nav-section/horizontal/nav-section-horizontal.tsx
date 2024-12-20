@@ -44,7 +44,7 @@ type GroupProps = {
 function Group({ items, config }: GroupProps) {
   return (
     <>
-      {items.map((list) => (
+      {items.map(list => (
         <NavList
           key={list.title + list.path}
           data={list}

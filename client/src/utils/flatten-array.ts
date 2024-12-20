@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // ----------------------------------------------------------------------
 
 export function flattenArray<T>(list: T[], key = 'children'): T[] {
@@ -10,5 +11,7 @@ export function flattenArray<T>(list: T[], key = 'children'): T[] {
     return item;
   });
 
-  return flatten?.concat(children.length ? flattenArray(children, key) : children);
+  return flatten?.concat(
+    children.length ? flattenArray(children, key) : children,
+  );
 }

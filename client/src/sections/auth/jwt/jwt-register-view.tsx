@@ -42,7 +42,9 @@ export default function JwtRegisterView() {
   const RegisterSchema = Yup.object().shape({
     username: Yup.string().required('User Name required'),
     cover: Yup.string().required('Image Profile required'),
-    email: Yup.string().required('Email is required').email('Email must be a valid email address'),
+    email: Yup.string()
+      .required('Email is required')
+      .email('Email must be a valid email address'),
     password: Yup.string().required('Password is required'),
   });
 
@@ -64,7 +66,7 @@ export default function JwtRegisterView() {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async data => {
     try {
       await register?.(data.email, data.password, data.username, data.cover);
 
@@ -83,23 +85,25 @@ export default function JwtRegisterView() {
       <Stack direction="row" spacing={0.5}>
         <Typography variant="body2"> Already have an account? </Typography>
 
-        <Link href={paths.auth.jwt.login} component={RouterLink} variant="subtitle2">
+        <Link
+          href={paths.auth.jwt.login}
+          component={RouterLink}
+          variant="subtitle2"
+        >
           Sign in
         </Link>
       </Stack>
     </Stack>
   );
 
-
   const renderForm = (
     <FormProvider methods={methods} onSubmit={onSubmit}>
       <Stack spacing={2.5}>
         {!!errorMsg && <Alert severity="error">{errorMsg}</Alert>}
 
-        
         <RHFTextField name="username" label="User Name" />
         <RHFTextField name="cover" label="Image Link" />
-        <RHFTextField name="email" type='email' label="Email address" />
+        <RHFTextField name="email" type="email" label="Email address" />
         <RHFTextField
           name="password"
           label="Password"
@@ -108,7 +112,13 @@ export default function JwtRegisterView() {
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={password.onToggle} edge="end">
-                  <Iconify icon={password.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'} />
+                  <Iconify
+                    icon={
+                      password.value
+                        ? 'solar:eye-bold'
+                        : 'solar:eye-closed-bold'
+                    }
+                  />
                 </IconButton>
               </InputAdornment>
             ),
@@ -134,7 +144,6 @@ export default function JwtRegisterView() {
       {renderHead}
 
       {renderForm}
-
     </>
   );
 }

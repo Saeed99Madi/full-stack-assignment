@@ -11,7 +11,11 @@ function NavSectionMini({ data, config, sx, ...other }: NavSectionProps) {
   return (
     <Stack sx={sx} {...other}>
       {data.map((group, index) => (
-        <Group key={group.subheader || index} items={group.items} config={navMiniConfig(config)} />
+        <Group
+          key={group.subheader || index}
+          items={group.items}
+          config={navMiniConfig(config)}
+        />
       ))}
     </Stack>
   );
@@ -29,7 +33,7 @@ type GroupProps = {
 function Group({ items, config }: GroupProps) {
   return (
     <>
-      {items.map((list) => (
+      {items.map(list => (
         <NavList
           key={list.title + list.path}
           data={list}

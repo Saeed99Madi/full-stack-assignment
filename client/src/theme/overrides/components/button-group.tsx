@@ -1,9 +1,19 @@
 import { alpha, Theme } from '@mui/material/styles';
-import { ButtonGroupProps, buttonGroupClasses } from '@mui/material/ButtonGroup';
+import {
+  ButtonGroupProps,
+  buttonGroupClasses,
+} from '@mui/material/ButtonGroup';
 
 // ----------------------------------------------------------------------
 
-const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
+const COLORS = [
+  'primary',
+  'secondary',
+  'info',
+  'success',
+  'warning',
+  'error',
+] as const;
 
 // NEW VARIANT
 declare module '@mui/material/ButtonGroup' {
@@ -51,7 +61,7 @@ export function buttonGroup(theme: Theme) {
       },
     };
 
-    const colorStyle = COLORS.map((color) => ({
+    const colorStyle = COLORS.map(color => ({
       [`& .${buttonGroupClasses.grouped}`]: {
         '&:not(:last-of-type)': {
           ...(!outlinedVariant && {
@@ -90,7 +100,8 @@ export function buttonGroup(theme: Theme) {
   return {
     MuiButtonGroup: {
       styleOverrides: {
-        root: ({ ownerState }: { ownerState: ButtonGroupProps }) => rootStyles(ownerState),
+        root: ({ ownerState }: { ownerState: ButtonGroupProps }) =>
+          rootStyles(ownerState),
       },
     },
   };

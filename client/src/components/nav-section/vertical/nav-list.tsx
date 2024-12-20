@@ -17,7 +17,12 @@ type NavListRootProps = {
   config: NavConfigProps;
 };
 
-export default function NavList({ data, depth, hasChild, config }: NavListRootProps) {
+export default function NavList({
+  data,
+  depth,
+  hasChild,
+  config,
+}: NavListRootProps) {
   const pathname = usePathname();
 
   const active = useActiveLink(data.path, hasChild);
@@ -34,7 +39,7 @@ export default function NavList({ data, depth, hasChild, config }: NavListRootPr
   }, [pathname]);
 
   const handleToggle = useCallback(() => {
-    setOpen((prev) => !prev);
+    setOpen(prev => !prev);
   }, []);
 
   const handleClose = useCallback(() => {
@@ -73,7 +78,7 @@ type NavListSubProps = {
 function NavSubList({ data, depth, config }: NavListSubProps) {
   return (
     <>
-      {data.map((list) => (
+      {data.map(list => (
         <NavList
           key={list.title + list.path}
           data={list}

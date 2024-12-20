@@ -12,14 +12,16 @@ type StyledItemProps = Omit<NavItemProps, 'item'> & {
 };
 
 export const StyledItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: prop => prop !== 'active',
 })<StyledItemProps>(({ active, open, depth, config, theme }) => {
   const subItem = depth !== 1;
 
   const activeStyles = {
     root: {
       color:
-        theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.primary.light,
+        theme.palette.mode === 'light'
+          ? theme.palette.primary.main
+          : theme.palette.primary.light,
       backgroundColor: alpha(theme.palette.primary.main, 0.08),
       '&:hover': {
         backgroundColor: alpha(theme.palette.primary.main, 0.16),

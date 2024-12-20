@@ -12,15 +12,23 @@ type PresetsOptionsProps = {
   onChange: (newValue: string) => void;
 };
 
-export default function PresetsOptions({ value, onChange }: PresetsOptionsProps) {
-  const options = primaryPresets.map((color) => ({
+export default function PresetsOptions({
+  value,
+  onChange,
+}: PresetsOptionsProps) {
+  const options = primaryPresets.map(color => ({
     name: color.name,
     value: color.main,
   }));
 
   return (
-    <Box columnGap={2} rowGap={1.5} display="grid" gridTemplateColumns="repeat(3, 1fr)">
-      {options.map((option) => {
+    <Box
+      columnGap={2}
+      rowGap={1.5}
+      display="grid"
+      gridTemplateColumns="repeat(3, 1fr)"
+    >
+      {options.map(option => {
         const selected = value === option.name;
 
         return (
@@ -30,7 +38,8 @@ export default function PresetsOptions({ value, onChange }: PresetsOptionsProps)
             sx={{
               height: 56,
               borderRadius: 1,
-              border: (theme) => `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
+              border: theme =>
+                `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
               ...(selected && {
                 borderColor: 'transparent',
                 bgcolor: alpha(option.value, 0.08),
@@ -43,7 +52,7 @@ export default function PresetsOptions({ value, onChange }: PresetsOptionsProps)
                 height: 12,
                 borderRadius: '50%',
                 bgcolor: option.value,
-                transition: (theme) =>
+                transition: theme =>
                   theme.transitions.create(['transform'], {
                     duration: theme.transitions.duration.shorter,
                   }),

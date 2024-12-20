@@ -2,7 +2,11 @@ import merge from 'lodash/merge';
 import { useMemo } from 'react';
 // @mui
 import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeProvider as MuiThemeProvider, ThemeOptions } from '@mui/material/styles';
+import {
+  createTheme,
+  ThemeProvider as MuiThemeProvider,
+  ThemeOptions,
+} from '@mui/material/styles';
 // components
 import { useSettingsContext } from 'src/components/settings';
 // system
@@ -30,7 +34,10 @@ export default function ThemeProvider({ children }: Props) {
 
   const presetsOption = presets(settings.themeColorPresets);
 
-  const contrastOption = contrast(settings.themeContrast === 'bold', settings.themeMode);
+  const contrastOption = contrast(
+    settings.themeContrast === 'bold',
+    settings.themeMode,
+  );
 
   const directionOption = direction(settings.themeDirection);
 
@@ -42,7 +49,7 @@ export default function ThemeProvider({ children }: Props) {
       typography,
       shape: { borderRadius: 8 },
     }),
-    []
+    [],
   );
 
   const memoizedValue = useMemo(
@@ -57,14 +64,23 @@ export default function ThemeProvider({ children }: Props) {
         // Presets: remove if not in use
         presetsOption,
         // Contrast: remove if not in use
-        contrastOption.theme
+        contrastOption.theme,
       ),
-    [baseOption, directionOption, darkModeOption, presetsOption, contrastOption.theme]
+    [
+      baseOption,
+      directionOption,
+      darkModeOption,
+      presetsOption,
+      contrastOption.theme,
+    ],
   );
 
   const theme = createTheme(memoizedValue as ThemeOptions);
 
-  theme.components = merge(componentsOverrides(theme), contrastOption.components);
+  theme.components = merge(
+    componentsOverrides(theme),
+    contrastOption.components,
+  );
 
   return (
     <MuiThemeProvider theme={theme}>

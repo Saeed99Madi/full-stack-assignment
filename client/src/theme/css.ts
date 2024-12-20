@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 // @mui
 import { alpha, Theme } from '@mui/material/styles';
 import { dividerClasses } from '@mui/material/Divider';

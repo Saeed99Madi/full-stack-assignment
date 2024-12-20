@@ -1,10 +1,21 @@
 import { alpha, Theme } from '@mui/material/styles';
 import { AvatarProps } from '@mui/material/Avatar';
-import { avatarGroupClasses, AvatarGroupProps } from '@mui/material/AvatarGroup';
+import {
+  avatarGroupClasses,
+  AvatarGroupProps,
+} from '@mui/material/AvatarGroup';
 
 // ----------------------------------------------------------------------
 
-const COLORS = ['default', 'primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
+const COLORS = [
+  'default',
+  'primary',
+  'secondary',
+  'info',
+  'success',
+  'warning',
+  'error',
+] as const;
 
 const colorByName = (name: string) => {
   const charAt = name.charAt(0);
@@ -30,7 +41,7 @@ declare module '@mui/material/AvatarGroup' {
 export function avatar(theme: Theme) {
   return {
     MuiAvatar: {
-      variants: COLORS.map((color) =>
+      variants: COLORS.map(color =>
         color === 'default'
           ? {
               props: { color: 'default' },
@@ -45,7 +56,7 @@ export function avatar(theme: Theme) {
                 color: theme.palette[color].contrastText,
                 backgroundColor: theme.palette[color].main,
               },
-            }
+            },
       ),
 
       styleOverrides: {

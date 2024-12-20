@@ -83,7 +83,9 @@ export default function NavItem({
       {!!children && (
         <Iconify
           width={16}
-          icon={open ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
+          icon={
+            open ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'
+          }
           sx={{ ml: 1, flexShrink: 0 }}
         />
       )}

@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 import { useScroll } from 'framer-motion';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 
@@ -16,7 +17,7 @@ export function useOffSetTop(top = 0, options?: UseScrollOptions): ReturnType {
   const [value, setValue] = useState(false);
 
   const onOffSetTop = useCallback(() => {
-    scrollY.on('change', (scrollHeight) => {
+    scrollY.on('change', scrollHeight => {
       if (scrollHeight > top) {
         setValue(true);
       } else {

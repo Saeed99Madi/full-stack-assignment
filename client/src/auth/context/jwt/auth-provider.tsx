@@ -82,7 +82,6 @@ type Props = {
 export function AuthProvider({ children }: Props) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-
   const initialize = useCallback(async () => {
     try {
       const accessToken = sessionStorage.getItem(STORAGE_KEY);
@@ -125,22 +124,16 @@ export function AuthProvider({ children }: Props) {
 
   // LOGIN
   const login = useCallback(async (email: string, password: string) => {
-
     const data = {
       email,
       password,
     };
 
-   
-    const response = await axios.post(
-      '/api/v1/user/login',
-      data,
-    );
-   
-    
-    const {user}  = response.data.data;
+    const response = await axios.post('/api/v1/user/login', data);
+
+    const { user } = response.data.data;
     console.log(user);
-    if(user)  {
+    if (user) {
       dispatch({
         type: Types.LOGIN,
         payload: {
@@ -148,12 +141,16 @@ export function AuthProvider({ children }: Props) {
         },
       });
     }
-   
   }, []);
 
   // REGISTER
   const register = useCallback(
-    async (email: string, password: string, cover: string, username: string) => {
+    async (
+      email: string,
+      password: string,
+      cover: string,
+      username: string,
+    ) => {
       const data = {
         email,
         password,
@@ -161,10 +158,7 @@ export function AuthProvider({ children }: Props) {
         cover,
       };
 
-      const response = await axios.post(
-        '/api/v1/user/signup',
-        data,
-      );
+      const response = await axios.post('/api/v1/user/signup', data);
 
       const { user } = response.data;
 
@@ -175,7 +169,7 @@ export function AuthProvider({ children }: Props) {
         },
       });
     },
-    []
+    [],
   );
 
   // LOGOUT
@@ -204,8 +198,12 @@ export function AuthProvider({ children }: Props) {
       register,
       logout,
     }),
-    [login, logout, register, state.user, status]
+    [login, logout, register, state.user, status],
   );
 
-  return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={memoizedValue}>
+      {children}
+    </AuthContext.Provider>
+  );
 }

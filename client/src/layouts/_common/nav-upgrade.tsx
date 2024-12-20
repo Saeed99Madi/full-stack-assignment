@@ -5,17 +5,17 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 // hooks
-import { useMockedUser } from 'src/hooks/use-mocked-user';
 // routes
 import { paths } from 'src/routes/paths';
 // locales
 // components
 import Label from 'src/components/label';
+import { useAuthContext } from 'src/auth/hooks';
 
 // ----------------------------------------------------------------------
 
 export default function NavUpgrade() {
-  const { user } = useMockedUser();
+  const { user } = useAuthContext();
 
   return (
     <Stack
@@ -57,15 +57,6 @@ export default function NavUpgrade() {
             {user?.email}
           </Typography>
         </Stack>
-
-        <Button
-          variant="contained"
-          href={paths.minimalUI}
-          target="_blank"
-          rel="noopener"
-        >
-          Upgrade to Pro
-        </Button>
       </Stack>
     </Stack>
   );

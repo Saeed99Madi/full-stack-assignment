@@ -78,7 +78,7 @@ export default function AccountPopover() {
       >
         <Avatar
           src={user?.photoURL}
-          alt={user?.displayName}
+          alt={user?.username}
           sx={{
             width: 36,
             height: 36,
@@ -94,7 +94,7 @@ export default function AccountPopover() {
       >
         <Box sx={{ p: 2, pb: 1.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {user?.displayName}
+            {user?.username}
           </Typography>
 
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>

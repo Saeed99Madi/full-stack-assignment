@@ -25,7 +25,8 @@ export function useMockedUser() {
     state: 'California',
     city: 'San Francisco',
     zipCode: '94116',
-    about: 'Praesent turpis. Phasellus viverra nulla ut metus varius laoreet. Phasellus tempus.',
+    about:
+      'Praesent turpis. Phasellus viverra nulla ut metus varius laoreet. Phasellus tempus.',
     role: 'admin',
     isPublic: true,
   };

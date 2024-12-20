@@ -40,7 +40,9 @@ export default function JwtLoginView() {
   const password = useBoolean();
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().required('Email is required').email('Email must be a valid email address'),
+    email: Yup.string()
+      .required('Email is required')
+      .email('Email must be a valid email address'),
     password: Yup.string().required('Password is required'),
   });
 
@@ -60,7 +62,7 @@ export default function JwtLoginView() {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async data => {
     try {
       await login?.(data.email, data.password);
 
@@ -79,7 +81,11 @@ export default function JwtLoginView() {
       <Stack direction="row" spacing={0.5}>
         <Typography variant="body2">New user?</Typography>
 
-        <Link component={RouterLink} href={paths.auth.jwt.register} variant="subtitle2">
+        <Link
+          component={RouterLink}
+          href={paths.auth.jwt.register}
+          variant="subtitle2"
+        >
           Create an account
         </Link>
       </Stack>
@@ -100,7 +106,11 @@ export default function JwtLoginView() {
           endAdornment: (
             <InputAdornment position="end">
               <IconButton onClick={password.onToggle} edge="end">
-                <Iconify icon={password.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'} />
+                <Iconify
+                  icon={
+                    password.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'
+                  }
+                />
               </IconButton>
             </InputAdornment>
           ),
@@ -129,7 +139,8 @@ export default function JwtLoginView() {
       {renderHead}
 
       <Alert severity="info" sx={{ mb: 3 }}>
-        Use email : <strong>saed.dev9@gmail.com</strong> / password :<strong> 123456789</strong>
+        Use email : <strong>saed.dev9@gmail.com</strong> / password :
+        <strong> 123456789</strong>
       </Alert>
 
       {renderForm}

@@ -9,8 +9,7 @@ import { LoadingScreen } from 'src/components/loading-screen';
 
 // ----------------------------------------------------------------------
 
-const IndexPage = lazy(() => import('src/pages/Commarce/one'));
-
+const IndexPage = lazy(() => import('src/pages/Commarce/products'));
 
 // ----------------------------------------------------------------------
 
@@ -26,9 +25,6 @@ export const dashboardRoutes = [
         </DashboardLayout>
       </AuthGuard>
     ),
-    children: [
-      { element: <IndexPage />, index: true },
-     
-    ],
+    children: [{ element: <IndexPage />, index: true }],
   },
 ];

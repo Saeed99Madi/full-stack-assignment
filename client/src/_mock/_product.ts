@@ -8,7 +8,12 @@ export const PRODUCT_GENDER_OPTIONS = [
 
 export const PRODUCT_CATEGORY_OPTIONS = ['Shose', 'Apparel', 'Accessories'];
 
-export const PRODUCT_RATING_OPTIONS = ['up4Star', 'up3Star', 'up2Star', 'up1Star'];
+export const PRODUCT_RATING_OPTIONS = [
+  'up4Star',
+  'up3Star',
+  'up2Star',
+  'up1Star',
+];
 
 export const PRODUCT_COLOR_OPTIONS = [
   '#00AB55',

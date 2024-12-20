@@ -22,7 +22,7 @@ export function useBoolean(defaultValue?: boolean): ReturnType {
   }, []);
 
   const onToggle = useCallback(() => {
-    setValue((prev) => !prev);
+    setValue(prev => !prev);
   }, []);
 
   return {

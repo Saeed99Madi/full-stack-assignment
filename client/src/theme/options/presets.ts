@@ -6,7 +6,7 @@ import { palette as themePalette } from 'src/theme/palette';
 // ----------------------------------------------------------------------
 
 export function presets(presetsColor: string) {
-  const primary = primaryPresets.find((i) => i.name === presetsColor);
+  const primary = primaryPresets.find(i => i.name === presetsColor);
 
   const theme = {
     palette: {

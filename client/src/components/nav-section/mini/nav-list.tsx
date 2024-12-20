@@ -19,7 +19,12 @@ type NavListRootProps = {
   config: NavConfigProps;
 };
 
-export default function NavList({ data, depth, hasChild, config }: NavListRootProps) {
+export default function NavList({
+  data,
+  depth,
+  hasChild,
+  config,
+}: NavListRootProps) {
   const navRef = useRef(null);
 
   const pathname = usePathname();
@@ -39,7 +44,7 @@ export default function NavList({ data, depth, hasChild, config }: NavListRootPr
 
   useEffect(() => {
     const appBarEl = Array.from(
-      document.querySelectorAll(`.${appBarClasses.root}`)
+      document.querySelectorAll(`.${appBarClasses.root}`),
     ) as Array<HTMLElement>;
 
     // Reset styles when hover
@@ -47,7 +52,7 @@ export default function NavList({ data, depth, hasChild, config }: NavListRootPr
       document.body.style.overflow = '';
       document.body.style.padding = '';
       // Apply for Window
-      appBarEl.forEach((elem) => {
+      appBarEl.forEach(elem => {
         elem.style.padding = '';
       });
     };
@@ -122,7 +127,7 @@ type NavListSubProps = {
 function NavSubList({ data, depth, config }: NavListSubProps) {
   return (
     <Stack spacing={0.5}>
-      {data.map((list) => (
+      {data.map(list => (
         <NavList
           key={list.title + list.path}
           data={list}

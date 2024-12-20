@@ -54,9 +54,12 @@ export default function NotificationsPopover() {
 
   const [currentTab, setCurrentTab] = useState('all');
 
-  const handleChangeTab = useCallback((event: React.SyntheticEvent, newValue: string) => {
-    setCurrentTab(newValue);
-  }, []);
+  const handleChangeTab = useCallback(
+    (event: React.SyntheticEvent, newValue: string) => {
+      setCurrentTab(newValue);
+    },
+    [],
+  );
 
   // const [notifications, setNotifications] = useState(_notifications);
 
@@ -72,7 +75,11 @@ export default function NotificationsPopover() {
   };
 
   const renderHead = (
-    <Stack direction="row" alignItems="center" sx={{ py: 2, pl: 2.5, pr: 1, minHeight: 68 }}>
+    <Stack
+      direction="row"
+      alignItems="center"
+      sx={{ py: 2, pl: 2.5, pr: 1, minHeight: 68 }}
+    >
       <Typography variant="h6" sx={{ flexGrow: 1 }}>
         Notifications
       </Typography>
@@ -95,7 +102,7 @@ export default function NotificationsPopover() {
 
   const renderTabs = (
     <Tabs value={currentTab} onChange={handleChangeTab}>
-      {TABS.map((tab) => (
+      {TABS.map(tab => (
         <Tab
           key={tab.value}
           iconPosition="end"
@@ -103,7 +110,11 @@ export default function NotificationsPopover() {
           label={tab.label}
           icon={
             <Label
-              variant={((tab.value === 'all' || tab.value === currentTab) && 'filled') || 'soft'}
+              variant={
+                ((tab.value === 'all' || tab.value === currentTab) &&
+                  'filled') ||
+                'soft'
+              }
               color={
                 (tab.value === 'unread' && 'info') ||
                 (tab.value === 'archived' && 'success') ||

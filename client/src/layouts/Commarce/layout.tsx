@@ -9,7 +9,6 @@ import { useSettingsContext } from 'src/components/settings';
 import Main from './main';
 import Header from './header';
 
-
 // ----------------------------------------------------------------------
 
 type Props = {
@@ -27,13 +26,10 @@ export default function DashboardLayout({ children }: Props) {
 
   const isMini = settings.themeLayout === 'mini';
 
-  
-
   if (isHorizontal) {
     return (
       <>
         <Header onOpenNav={nav.onTrue} />
-
 
         <Main>{children}</Main>
       </>
@@ -52,7 +48,6 @@ export default function DashboardLayout({ children }: Props) {
             flexDirection: { xs: 'column', md: 'row' },
           }}
         >
-
           <Main>{children}</Main>
         </Box>
       </>

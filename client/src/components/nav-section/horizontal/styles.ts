@@ -12,7 +12,7 @@ type StyledItemProps = Omit<NavItemProps, 'item'> & {
 };
 
 export const StyledItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: prop => prop !== 'active',
 })<StyledItemProps>(({ active, open, depth, config, theme }) => {
   const subItem = depth !== 1;
 

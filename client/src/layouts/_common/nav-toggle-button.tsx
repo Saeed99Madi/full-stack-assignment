@@ -28,7 +28,10 @@ export default function NavToggleButton({ sx, ...other }: IconButtonProps) {
     <IconButton
       size="small"
       onClick={() =>
-        settings.onUpdate('themeLayout', settings.themeLayout === 'vertical' ? 'mini' : 'vertical')
+        settings.onUpdate(
+          'themeLayout',
+          settings.themeLayout === 'vertical' ? 'mini' : 'vertical',
+        )
       }
       sx={{
         p: 0.5,

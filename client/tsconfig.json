@@ -29,10 +29,9 @@
     "node_modules"
   ],
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "src/**/*",
-  ],
+    "src",
+    ".eslintrc.json"
+, "../here"  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

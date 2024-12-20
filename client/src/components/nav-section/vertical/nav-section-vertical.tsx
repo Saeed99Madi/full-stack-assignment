@@ -41,10 +41,10 @@ function Group({ subheader, items, config }: GroupProps) {
   const [open, setOpen] = useState(true);
 
   const handleToggle = useCallback(() => {
-    setOpen((prev) => !prev);
+    setOpen(prev => !prev);
   }, []);
 
-  const renderContent = items.map((list) => (
+  const renderContent = items.map(list => (
     <NavList
       key={list.title + list.path}
       data={list}
@@ -58,7 +58,12 @@ function Group({ subheader, items, config }: GroupProps) {
     <List disablePadding sx={{ px: 2 }}>
       {subheader ? (
         <>
-          <StyledSubheader disableGutters disableSticky onClick={handleToggle} config={config}>
+          <StyledSubheader
+            disableGutters
+            disableSticky
+            onClick={handleToggle}
+            config={config}
+          >
             {subheader}
           </StyledSubheader>
 

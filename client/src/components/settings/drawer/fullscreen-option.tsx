@@ -31,22 +31,24 @@ export default function FullScreenOption() {
           borderRadius: 1,
           color: 'text.disabled',
           typography: 'subtitle2',
-          border: (theme) => `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
+          border: theme => `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
           ...(fullscreen && {
             color: 'text.primary',
           }),
           '& .svg-color': {
-            background: (theme) =>
+            background: theme =>
               `linear-gradient(135deg, ${theme.palette.grey[500]} 0%, ${theme.palette.grey[600]} 100%)`,
             ...(fullscreen && {
-              background: (theme) =>
+              background: theme =>
                 `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
             }),
           },
         }}
       >
         <SvgColor
-          src={`/assets/icons/setting/${fullscreen ? 'ic_exit_full_screen' : 'ic_full_screen'}.svg`}
+          src={`/assets/icons/setting/${
+            fullscreen ? 'ic_exit_full_screen' : 'ic_full_screen'
+          }.svg`}
           sx={{ width: 16, height: 16, mr: 1 }}
         />
 

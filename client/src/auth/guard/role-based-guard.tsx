@@ -18,7 +18,12 @@ type RoleBasedGuardProp = {
   sx?: SxProps<Theme>;
 };
 
-export default function RoleBasedGuard({ hasContent, roles, children, sx }: RoleBasedGuardProp) {
+export default function RoleBasedGuard({
+  hasContent,
+  roles,
+  children,
+  sx,
+}: RoleBasedGuardProp) {
   // Logic here to get current user role
   const { user } = useMockedUser();
 
@@ -27,7 +32,10 @@ export default function RoleBasedGuard({ hasContent, roles, children, sx }: Role
 
   if (typeof roles !== 'undefined' && !roles.includes(currentRole)) {
     return hasContent ? (
-      <Container component={MotionContainer} sx={{ textAlign: 'center', ...sx }}>
+      <Container
+        component={MotionContainer}
+        sx={{ textAlign: 'center', ...sx }}
+      >
         <m.div variants={varBounce().in}>
           <Typography variant="h3" sx={{ mb: 2 }}>
             Permission Denied

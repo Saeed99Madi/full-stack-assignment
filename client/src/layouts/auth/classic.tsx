@@ -40,8 +40,6 @@ export default function AuthClassicLayout({ children, image, title }: Props) {
 
   const upMd = useResponsive('up', 'md');
 
-  
-
   const renderContent = (
     <Stack
       sx={{
@@ -66,7 +64,7 @@ export default function AuthClassicLayout({ children, image, title }: Props) {
         ...bgGradient({
           color: alpha(
             theme.palette.background.default,
-            theme.palette.mode === 'light' ? 0.88 : 0.94
+            theme.palette.mode === 'light' ? 0.88 : 0.94,
           ),
           imgUrl: '/assets/background/overlay_2.jpg',
         }),
@@ -84,7 +82,7 @@ export default function AuthClassicLayout({ children, image, title }: Props) {
       />
 
       <Stack direction="row" spacing={2}>
-        {METHODS.map((option) => (
+        {METHODS.map(option => (
           <Tooltip key={option.label} title={option.label}>
             <Link component={RouterLink} href={option.path}>
               <Box

@@ -19,7 +19,6 @@ import {
 } from 'src/_mock';
 // api
 import { useGetProducts, useSearchProducts } from 'src/api/product';
-// import { useSearchProducts } from 'src/api/product';
 // components
 import EmptyContent from 'src/components/empty-content';
 import { useSettingsContext } from 'src/components/settings';

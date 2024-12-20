@@ -8,7 +8,6 @@ const ROOTS = {
 // ----------------------------------------------------------------------
 
 export const paths = {
-  minimalUI: 'https://mui.com/store/items/minimal-dashboard/',
   // AUTH
   auth: {
     jwt: {
@@ -19,6 +18,6 @@ export const paths = {
   // DASHBOARD
   dashboard: {
     root: ROOTS.DASHBOARD,
-    one: `${ROOTS.DASHBOARD}/one`,
+    one: `${ROOTS.DASHBOARD}/products`,
   },
 };

@@ -57,15 +57,6 @@ export default function NavUpgrade() {
             {user?.email}
           </Typography>
         </Stack>
-
-        <Button
-          variant="contained"
-          href={paths.minimalUI}
-          target="_blank"
-          rel="noopener"
-        >
-          Upgrade to Pro
-        </Button>
       </Stack>
     </Stack>
   );

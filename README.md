@@ -8,7 +8,7 @@ To complete the following full-stack assignment. Treat this as a **production-qu
 
 ## **SQL Scheme**
 
-![image](https://github.com/user-attachments/assets/388e80bb-4c29-4467-b16a-314f43983d6d)
+![image](https://github.com/user-attachments/assets/3cc79ca7-c61b-4c3e-a048-a7c679846feb)
 
 ## **Requirements** :wrench:
 

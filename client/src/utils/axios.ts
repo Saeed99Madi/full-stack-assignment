@@ -49,7 +49,7 @@ export const endpoints = {
     search: '/api/post/search',
   },
   product: {
-    list: '/api/product/list',
+    list: '/api/v1/products',
     details: '/api/product/details',
     search: '/api/product/search',
   },

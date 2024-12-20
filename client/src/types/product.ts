@@ -6,6 +6,7 @@ export type IProductFilters = {
   rating: string;
   gender: string[];
   category: string;
+  search: string;
   colors: string[];
   priceRange: number[];
 };
@@ -55,21 +56,7 @@ export type IProductItem = {
   inventoryType: string;
   subDescription: string;
   priceSale: number | null;
-  reviews: IProductReview[];
   createdAt: string;
-  ratings: {
-    name: string;
-    starCount: number;
-    reviewCount: number;
-  }[];
-  saleLabel: {
-    enabled: boolean;
-    content: string;
-  };
-  newLabel: {
-    enabled: boolean;
-    content: string;
-  };
 };
 
 export type IProductTableFilterValue = string | string[];

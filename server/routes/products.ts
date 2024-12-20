@@ -6,7 +6,8 @@ import {
   getProducts,
   getProductData,
 } from '../controllers/Product';
+import { errorWrapper } from '../utils';
 
-productRouter.post('/products', createProduct);
-productRouter.get('/products', getProducts);
-productRouter.get('/products/:id', getProductData);
+productRouter.post('/', errorWrapper(createProduct));
+productRouter.get('/', errorWrapper(getProducts));
+productRouter.get('/:id', errorWrapper(getProductData));

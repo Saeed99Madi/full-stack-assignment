@@ -32,19 +32,16 @@ export const CreateProductService = async (
 export const getAllProducts = async (
   req: Request,
 ): Promise<IProductsInterface> => {
-  const { limit, page, CategoryId, search } = req.query;
+  const { limit, page, search } = req.query;
   const pageNumber = page ? parseInt(page as string, 10) : 1;
   const limitNumber = limit ? parseInt(limit as string, 10) : 10;
   const offset = (pageNumber - 1) * limitNumber;
-  const whereCondition = CategoryId
-    ? { active: true, CategoryId }
-    : { active: true };
 
   let searchCondition: any = {};
   if (search) {
     searchCondition = {
-      '$Product.title$': sequelize.where(
-        sequelize.fn('LOWER', sequelize.col('Product.title')),
+      '$Product.name$': sequelize.where(
+        sequelize.fn('LOWER', sequelize.col('Product.name')),
         'LIKE',
         '%' + search + '%',
       ),
@@ -52,8 +49,7 @@ export const getAllProducts = async (
   }
 
   const products = await Product.findAndCountAll({
-    include: [{ model: Category, attributes: ['title'] }],
-    where: { ...whereCondition, ...searchCondition },
+    where: { ...searchCondition },
     offset,
     limit: limitNumber,
   });

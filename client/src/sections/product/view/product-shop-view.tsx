@@ -60,6 +60,12 @@ export default function ProductShopView() {
 
   const debouncedQuery = useDebounce(searchQuery);
 
+  // Define the number of items per page
+  const itemsPerPage = 10;
+
+  // State for current page, initialized to the first page
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
   const [filters, setFilters] = useState(defaultFilters);
   const { products, productsLoading, productsEmpty } = useGetProducts();
 
@@ -191,7 +197,12 @@ export default function ProductShopView() {
 
       {(notFound || productsEmpty) && renderNotFound}
 
-      <ProductList products={dataFiltered} loading={productsLoading} />
+      <ProductList
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        products={dataFiltered}
+        loading={productsLoading}
+      />
     </Container>
   );
 }

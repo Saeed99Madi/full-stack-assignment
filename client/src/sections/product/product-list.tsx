@@ -4,17 +4,36 @@ import Pagination, { paginationClasses } from '@mui/material/Pagination';
 // types
 import { IProductItem } from 'src/types/product';
 //
+import { Dispatch, SetStateAction } from 'react';
 import ProductItem from './product-item';
 import { ProductItemSkeleton } from './product-skeleton';
 
 // ----------------------------------------------------------------------
 
 type Props = BoxProps & {
+  currentPage: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
   products: IProductItem[];
   loading?: boolean;
 };
 
-export default function ProductList({ products, loading, ...other }: Props) {
+export default function ProductList({
+  currentPage,
+  setCurrentPage,
+  products,
+  loading,
+  ...other
+}: Props) {
+  const indexOfLastItem = currentPage * 8;
+  const indexOfFirstItem = indexOfLastItem - 8;
+  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number,
+  ): void => {
+    setCurrentPage(value);
+  };
   const renderSkeleton = (
     <>
       {[...Array(16)].map((_, index) => (
@@ -25,7 +44,7 @@ export default function ProductList({ products, loading, ...other }: Props) {
 
   const renderList = (
     <>
-      {products.map(product => (
+      {currentItems.map(product => (
         <ProductItem key={product.id} product={product} />
       ))}
     </>
@@ -49,7 +68,9 @@ export default function ProductList({ products, loading, ...other }: Props) {
 
       {products.length > 8 && (
         <Pagination
-          count={8}
+          count={Math.ceil(products.length / 8)}
+          page={currentPage}
+          onChange={handlePageChange}
           sx={{
             mt: 8,
             [`& .${paginationClasses.ul}`]: {

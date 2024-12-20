@@ -33,8 +33,8 @@ export const getAllProducts = async (
   req: Request,
 ): Promise<IProductsInterface> => {
   const { limit, page, search } = req.query;
-  const pageNumber = page ? parseInt(page as string, 10) : 1;
-  const limitNumber = limit ? parseInt(limit as string, 10) : 10;
+  const pageNumber = page ? parseInt(page as string, 20) : 1;
+  const limitNumber = limit ? parseInt(limit as string, 20) : 10;
   const offset = (pageNumber - 1) * limitNumber;
 
   let searchCondition: any = {};

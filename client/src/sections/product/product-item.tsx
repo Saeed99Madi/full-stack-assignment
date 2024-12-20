@@ -11,7 +11,7 @@ import { RouterLink } from 'src/routes/components';
 // utils
 import { fCurrency } from 'src/utils/format-number';
 // components
-import Label from 'src/components/label';
+// import Label from 'src/components/label';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 // import { ColorPreview } from 'src/components/color-utils';
@@ -29,58 +29,47 @@ type Props = {
 export default function ProductItem({ product }: Props) {
   // const { onAddToCart } = useCheckoutContext();
 
-  const {
-    id,
-    name,
-    coverUrl,
-    price,
-    colors,
-    available,
-    sizes,
-    priceSale,
-    newLabel,
-    saleLabel,
-  } = product;
+  const { name, coverUrl, price, available, priceSale } = product;
 
   const linkTo = paths.dashboard.one;
 
-  const handleAddCart = async () => {
-    const newProduct = {
-      id,
-      name,
-      coverUrl,
-      available,
-      price,
-      colors: [colors[0]],
-      size: sizes[0],
-      quantity: 1,
-    };
-    try {
-      // onAddToCart(newProduct);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleAddCart = async () => {
+  //   const newProduct = {
+  //     id,
+  //     name,
+  //     coverUrl,
+  //     available,
+  //     price,
+  //     colors: [colors[0]],
+  //     size: sizes[0],
+  //     quantity: 1,
+  //   };
+  //   try {
+  //     // onAddToCart(newProduct);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  const renderLabels = (newLabel.enabled || saleLabel.enabled) && (
-    <Stack
-      direction="row"
-      alignItems="center"
-      spacing={1}
-      sx={{ position: 'absolute', zIndex: 9, top: 16, right: 16 }}
-    >
-      {newLabel.enabled && (
-        <Label variant="filled" color="info">
-          {newLabel.content}
-        </Label>
-      )}
-      {saleLabel.enabled && (
-        <Label variant="filled" color="error">
-          {saleLabel.content}
-        </Label>
-      )}
-    </Stack>
-  );
+  // const renderLabels = (newLabel.enabled || saleLabel.enabled) && (
+  //   <Stack
+  //     direction="row"
+  //     alignItems="center"
+  //     spacing={1}
+  //     sx={{ position: 'absolute', zIndex: 9, top: 16, right: 16 }}
+  //   >
+  //     {newLabel.enabled && (
+  //       <Label variant="filled" color="info">
+  //         {newLabel.content}
+  //       </Label>
+  //     )}
+  //     {saleLabel.enabled && (
+  //       <Label variant="filled" color="error">
+  //         {saleLabel.content}
+  //       </Label>
+  //     )}
+  //   </Stack>
+  // );
 
   const renderImg = (
     <Box sx={{ position: 'relative', p: 1 }}>
@@ -89,7 +78,7 @@ export default function ProductItem({ product }: Props) {
           color="warning"
           size="medium"
           className="add-cart-btn"
-          onClick={handleAddCart}
+          // onClick={handleAddCart}
           sx={{
             right: 16,
             bottom: 16,
@@ -163,7 +152,7 @@ export default function ProductItem({ product }: Props) {
         },
       }}
     >
-      {renderLabels}
+      {/* {renderLabels} */}
 
       {renderImg}
 

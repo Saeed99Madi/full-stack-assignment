@@ -41,7 +41,6 @@ type Props = {
   }[];
   categoryOptions: string[];
   ratingOptions: string[];
-  colorOptions: string[];
 };
 
 export default function ProductFilters({
@@ -55,7 +54,6 @@ export default function ProductFilters({
   canReset,
   onResetFilters,
   //
-  colorOptions,
   genderOptions,
   ratingOptions,
   categoryOptions,
@@ -179,14 +177,6 @@ export default function ProductFilters({
     </Stack>
   );
 
-  const renderColor = (
-    <Stack>
-      <Typography variant="subtitle2" sx={{ mb: 1 }}>
-        Color
-      </Typography>
-    </Stack>
-  );
-
   const renderPrice = (
     <Stack>
       <Typography variant="subtitle2" sx={{ flexGrow: 1 }}>
@@ -286,8 +276,6 @@ export default function ProductFilters({
             {renderGender}
 
             {renderCategory}
-
-            {renderColor}
 
             {renderPrice}
 

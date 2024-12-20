@@ -5,6 +5,6 @@ import { productRouter } from './products';
 
 const router: Router = Router();
 router.use('/user', errorWrapper(authRouter));
-router.use('/product', errorWrapper(productRouter));
+router.use('/products', errorWrapper(productRouter));
 
 export { router };

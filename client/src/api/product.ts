@@ -14,11 +14,11 @@ export function useGetProducts() {
 
   const memoizedValue = useMemo(
     () => ({
-      products: (data?.products as IProductItem[]) || [],
+      products: (data?.data as IProductItem[]) || [],
       productsLoading: isLoading,
       productsError: error,
       productsValidating: isValidating,
-      productsEmpty: !isLoading && !data?.products.length,
+      productsEmpty: !isLoading && !data?.data.length,
     }),
     [data?.products, error, isLoading, isValidating],
   );

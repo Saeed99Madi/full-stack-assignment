@@ -133,7 +133,7 @@ export function AuthProvider({ children }: Props) {
     const response = await axios.post('/api/v1/user/login', data);
 
     const { user } = response.data.data;
-    console.log(user);
+
     if (user) {
       dispatch({
         type: Types.LOGIN,
@@ -161,7 +161,7 @@ export function AuthProvider({ children }: Props) {
 
       const response = await axios.post('/api/v1/user/signup', data);
 
-      const { user } = response.data;
+      const { user } = response.data.data;
 
       dispatch({
         type: Types.REGISTER,
@@ -182,7 +182,9 @@ export function AuthProvider({ children }: Props) {
       });
       localStorage.removeItem('user');
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: Types.LOGOUT,
+      });
     }
   }, []);
 

@@ -1,5 +1,9 @@
 import { useEffect, useReducer, useCallback, useMemo, useState } from 'react';
+
 // utils
+// eslint-disable-next-line camelcase
+import { jwtDecode } from 'jwt-decode';
+
 import axios, { endpoints } from 'src/utils/axios';
 //
 import { AuthContext } from './auth-context';
@@ -84,14 +88,11 @@ export function AuthProvider({ children }: Props) {
 
   const initialize = useCallback(async () => {
     try {
-      const accessToken = sessionStorage.getItem(STORAGE_KEY);
+      const token = String(document.cookie.slice(6)) || null;
+      const decodedToken = token && jwtDecode(token);
 
-      if (accessToken && isValidToken(accessToken)) {
-        setSession(accessToken);
-
-        const response = await axios.get(endpoints.auth.me);
-
-        const { user } = response.data;
+      if (decodedToken) {
+        const user = decodedToken;
 
         dispatch({
           type: Types.INITIAL,
@@ -174,10 +175,15 @@ export function AuthProvider({ children }: Props) {
 
   // LOGOUT
   const logout = useCallback(async () => {
-    setSession(null);
-    dispatch({
-      type: Types.LOGOUT,
-    });
+    try {
+      await axios.post('/api/v1/user/logout');
+      dispatch({
+        type: Types.LOGOUT,
+      });
+      localStorage.removeItem('user');
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   // ----------------------------------------------------------------------

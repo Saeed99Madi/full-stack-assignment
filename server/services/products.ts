@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Category, Product } from '../models';
+import { Product } from '../models';
 import { CustomError } from '../utils';
 import { productSchema } from '../validations';
 import { IProductResponse, IProductsInterface } from '../interfaces/products';
@@ -10,18 +10,63 @@ export const CreateProductService = async (
   req: Request,
 ): Promise<IProductResponse> => {
   const { body } = req;
-  const { title, description, price, CategoryId, image } = body;
-  await productSchema({ title, description, CategoryId });
-  const product = await Product.findOne({ where: { title } });
+  const {
+    name,
+    gender,
+    publish,
+    category,
+    inventoryType,
+    description,
+    subDescription,
+    coverUrl,
+    price,
+    priceSale,
+    totalRatings,
+    totalSold,
+    totalReviews,
+    taxes,
+    quantity,
+    available,
+  } = body;
+  await productSchema({
+    name,
+    gender,
+    publish,
+    category,
+    inventoryType,
+    description,
+    subDescription,
+    coverUrl,
+    price,
+    priceSale,
+    totalRatings,
+    totalSold,
+    totalReviews,
+    taxes,
+    quantity,
+    available,
+  });
+  const product = await Product.findOne({ where: { name } });
   if (product) {
     throw new CustomError(401, 'The Product was added previously !');
   }
   const newProduct = await Product.create({
-    title,
+    name,
+    gender,
+    publish,
+    category,
+    inventoryType,
     description,
-    CategoryId,
+    subDescription,
+    coverUrl,
     price,
-    image,
+    priceSale,
+    totalRatings,
+    totalSold,
+    totalReviews,
+    taxes,
+    quantity,
+    available,
   });
   return {
     status: 201,
@@ -33,8 +78,8 @@ export const getAllProducts = async (
   req: Request,
 ): Promise<IProductsInterface> => {
   const { limit, page, search } = req.query;
-  const pageNumber = page ? parseInt(page as string, 20) : 1;
-  const limitNumber = limit ? parseInt(limit as string, 20) : 10;
+  const pageNumber = page ? parseInt(page as string, 10) : 1;
+  const limitNumber = limit ? parseInt(limit as string, 20) : 20;
   const offset = (pageNumber - 1) * limitNumber;
 
   let searchCondition: any = {};

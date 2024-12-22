@@ -58,7 +58,7 @@ jobs:
         # Environment variables used by the `client.js` script to create a new PostgreSQL table.
         env:
           # The hostname used to communicate with the PostgreSQL service container
-          TEST_URL: postgres://taskuser:123456@localhost:5432/taskdb
+          TEST_URL: postgres://taskuser:root@localhost:5432/taskdb
           SECRET_KEY: fljuhpgr,gpfdjfvitm,vpvnfkjbfb
           PRODUCT: Full Satck TS Task - Said Madi
           PORT: 8080

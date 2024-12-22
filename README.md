@@ -64,13 +64,33 @@ To complete the following full-stack assignment. Treat this as a **production-qu
   SECRET_KEY=   # Secret key for authentication
   ```
 
-### **Steps to Run the Server**
 
-1. Install dependencies:
+### **Steps to Set Up and Run the Server**
+
+1. **Install dependencies:**
    ```bash
    npm install
    ```
-2. Run the server:
+
+2. **Build the database:**
+   - General build:
+     ```bash
+     npm run buildDB
+     ```
+   - For **development**:
+     ```bash
+     npm run buildDB-dev
+     ```
+   - For **testing**:
+     ```bash
+     npm run buildDB-test
+     ```
+   - For **production**:
+     ```bash
+     npm run buildDB-production
+     ```
+
+3. **Run the server:**
    - For **development**:
      ```bash
      npm run dev
@@ -79,6 +99,7 @@ To complete the following full-stack assignment. Treat this as a **production-qu
      ```bash
      npm run start
      ```
+
 3. Verify the server is running on `http://localhost:8080`.
 
 ### **Steps to Run the Front-End**

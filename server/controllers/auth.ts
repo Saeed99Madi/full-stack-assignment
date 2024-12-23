@@ -2,11 +2,10 @@ import { Request, Response } from 'express';
 import { loginService, signupService } from '../services';
 
 const signup = async (req: Request, res: Response) => {
-  const { token, data } = await signupService(req.body);
+  const { token, data, status } = await signupService(req.body);
 
   res.cookie('token', token).json({
-    status: 200,
-    message: 'User created successfully',
+    status: status,
     user: data,
     token,
   });

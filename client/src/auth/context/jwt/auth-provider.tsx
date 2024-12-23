@@ -159,6 +159,8 @@ export function AuthProvider({ children }: Props) {
         cover,
       };
       const response = await axios.post('/api/v1/user/signup', data);
+      console.log(response.data);
+
       const { user } = response.data;
       dispatch({
         type: Types.REGISTER,

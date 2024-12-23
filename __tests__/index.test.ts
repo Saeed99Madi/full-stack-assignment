@@ -24,7 +24,7 @@ describe('Post /api/v1/user/signup', () => {
       .end((err, res) => {
         expect(res.type).toBe('application/json');
         const response = JSON.parse(res.text);
-        expect(response.status).toBe(200);
+        expect(response.status).toBe(201);
         token = response.token;
         done();
 

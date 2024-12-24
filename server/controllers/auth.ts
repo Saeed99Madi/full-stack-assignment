@@ -5,7 +5,7 @@ const signup = async (req: Request, res: Response) => {
   const { token, data } = await signupService(req.body);
 
   res.cookie('token', token).json({
-    status: 200,
+    status: 201,
     message: 'User created successfully',
     user: data,
     token,

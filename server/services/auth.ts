@@ -24,17 +24,8 @@ const signupService = async (
     },
   });
 
-  if (userExists?.username === username) {
-    return {
-      status: 409,
-      data: 'اسم المستخدم موجود',
-    };
-  }
-  if (userExists?.email === email) {
-    return {
-      status: 409,
-      data: 'هذا الايميل مستخدم',
-    };
+  if (userExists?.email === email || userExists?.username === username) {
+    throw new CustomError(409, 'this is User Is Used Please Login');
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -74,13 +65,13 @@ const loginService = async (
   console.log(users);
 
   if (!user) {
-    throw new CustomError(404, 'هناك خطأ في اسم المستخدم');
+    throw new CustomError(404, 'Password is not correct');
   }
 
   const result = await bcrypt.compare(password, user.dataValues.password);
 
   if (!result) {
-    throw new CustomError(401, 'خطأ في البريد الإلكتروني أو كلمة المرور');
+    throw new CustomError(401, 'Passwrod or Email is not correct');
   }
 
   const userName = user.username;

@@ -1,13 +1,12 @@
-import { useEffect, useReducer, useCallback, useMemo, useState } from 'react';
+import { useEffect, useReducer, useCallback, useMemo } from 'react';
 
 // utils
 // eslint-disable-next-line camelcase
 import { jwtDecode } from 'jwt-decode';
 
-import axios, { endpoints } from 'src/utils/axios';
+import axios from 'src/utils/axios';
 //
 import { AuthContext } from './auth-context';
-import { isValidToken, setSession } from './utils';
 import { ActionMapType, AuthStateType, AuthUserType } from '../../types';
 
 // ----------------------------------------------------------------------
@@ -77,8 +76,6 @@ const reducer = (state: AuthStateType, action: ActionsType) => {
 
 // ----------------------------------------------------------------------
 
-const STORAGE_KEY = 'accessToken';
-
 type Props = {
   children: React.ReactNode;
 };
@@ -109,7 +106,6 @@ export function AuthProvider({ children }: Props) {
         });
       }
     } catch (error) {
-      console.error(error);
       dispatch({
         type: Types.INITIAL,
         payload: {
@@ -159,7 +155,6 @@ export function AuthProvider({ children }: Props) {
         cover,
       };
       const response = await axios.post('/api/v1/user/signup', data);
-      console.log(response.data);
 
       const { user } = response.data;
       dispatch({
